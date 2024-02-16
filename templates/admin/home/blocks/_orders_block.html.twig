@@ -1,0 +1,26 @@
+<div class="admin-home-block">
+    <h3 class="block-title icon-left">
+        <svg class="icon i-left">
+            <use xlink:href="/svg/sprite.svg#cart_fill"></use>
+        </svg> 
+        <span>Commandes reçues</span>
+    </h3>
+    <div class="block-body">
+        <div class="block-big">
+            <span class="block-big-counter">{{ dashboard.countOrdersNotSeen | number_formater }}</span>
+            <a href="{{ path('admin_order_index', {seen: false}) }}" class="block-big-label">nouvellement reçues</a>
+        </div>
+        <div class="block-big">
+            <span class="block-big-counter">{{ dashboard.countOrders | number_formater }}</span>
+            <span class="block-big-label">au total</span>
+        </div>
+    </div>
+    <div class="block-footer">
+        <a href="{{ path('admin_order_index') }}" class="admin-home-button icon-left">
+            <svg class="icon i-left i-cart">
+                <use xlink:href="/svg/sprite.svg#cart_fill"></use>
+            </svg> 
+            <span>Voir les commandes</span>
+        </a>
+    </div>
+</div>

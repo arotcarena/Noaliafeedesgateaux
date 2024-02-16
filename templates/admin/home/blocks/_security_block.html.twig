@@ -1,0 +1,21 @@
+<div class="admin-home-block start-block">
+    <h3 class="block-title icon-left">
+        <svg class="icon i-left i-eye">
+            <use xlink:href="/svg/sprite.svg#lock_fill"></use>
+        </svg> 
+        <span>Sécurité</span>
+    </h3>
+    <div class="block-body">
+    </div>
+    <div class="block-footer">
+        <a href="{{ path('admin_security_passwordUpdate') }}" class="admin-home-button add-button dual icon-left">
+            <span>Modifier mon mot de passe</span>
+        </a>
+        <a href="{{ path('security_logout') }}" class="admin-home-button dual icon-left admin-logout">
+            <svg class="icon i-left i-cake">
+                <use xlink:href="/svg/sprite.svg#logout"></use>
+            </svg> 
+            <span>Me déconnecter</span>
+        </a>
+    </div>
+</div>

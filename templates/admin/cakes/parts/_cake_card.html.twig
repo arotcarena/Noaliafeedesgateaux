@@ -1,0 +1,35 @@
+<a href="{{ path('admin_cakes_show', {id: cake.id}) }}" class="admin-cake-item">
+    <div class="admin-cake-card">
+        <div style="background: url('{{ cake.firstPicture | picture_path }}') center center / cover no-repeat"
+            class="cake-card-img">
+            <div class="cake-card-spot {% if cake.spotlighted %}spot-on{% endif %}" 
+                data-entrypoint="{{ path('admin_cakes_spotlightToggle', {id: cake.id}) }}"
+                data-form=".filter-search-form"
+                data-onlyspotlightednav=".js-filter-spotlighted"
+                title="{{ cake.spotlighted ? 'Enlever de la Une': 'Mettre à la Une' }}"
+                >
+                <svg class="icon i-spot i-spot-on">
+                    <use xlink:href="/svg/sprite.svg#spot_on"></use>
+                </svg>
+                <svg class="icon i-spot i-spot-off">
+                    <use xlink:href="/svg/sprite.svg#spot_off"></use>
+                </svg> 
+            </div>
+            <p class="cake-card-date">Ajouté le {{ cake.createdAt.format('d/m/Y') }}</p>
+            <div class="cake-card-visit">
+                <span><strong>{{ cake.countVisit ?? '0' }}</strong> vue{% if cake.countVisit > 1 %}s{% endif %}</span>
+                {% if cake.lastVisit %}
+                    <span class="text-very-small">{% if cake.countVisit > 1 %}Dernière - {% endif %}{{ cake.lastVisit | order_date_format }}</span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="cake-card-body">
+            <h3 class="cake-card-title {% if cake.title is null %}no-content{% endif %}">{{ cake.title ?: 'Sans titre' }}</h3>
+            <p class="cake-card-description {% if cake.description is null %}no-content{% endif %}">{{ cake.description | excerpt(100) ?: 'Sans description' }}</p>
+            <div class="cake-card-controls">
+                {% include "admin/cakes/form/_update_button.html.twig" %}
+                {% include "admin/cakes/form/_delete_button.html.twig" %}
+            </div>
+        </div>
+    </div>
+</a>

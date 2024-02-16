@@ -1,0 +1,18 @@
+<div class="upload-group">
+    <div class="upload-input-container">
+        {{ form_widget(form.firstPictureFile, {
+            required: false,
+        attr: {
+            class: 'upload-input'
+        }
+        }) }}
+    </div>
+    {% if form_errors(form.firstPictureFile) %}
+        <div class="admin-form-error icon-left">
+            <svg class="icon i-left">
+                <use xlink:href="/svg/sprite.svg#error"></use>
+            </svg>
+            {{ form_errors(form.firstPictureFile) }}
+        </div>
+    {% endif %}
+</div>

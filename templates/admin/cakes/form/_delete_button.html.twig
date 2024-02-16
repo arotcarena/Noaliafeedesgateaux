@@ -1,0 +1,9 @@
+<form action="{{ path('admin_cakes_delete') }}" method="POST">
+    <button type="submit" name="cake_id" value="{{ cake.id }}" class="cake-card-button cake-delete-button icon-left">
+        <svg class="icon i-left">
+            <use xlink:href="/svg/sprite.svg#trash"></use>
+        </svg> 
+        <span>Supprimer</span>
+    </button>
+    <input type="hidden" name="token" value="{{ csrf_token('delete-cake') }}"/>
+</form> 

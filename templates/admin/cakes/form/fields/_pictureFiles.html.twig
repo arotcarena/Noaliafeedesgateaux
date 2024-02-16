@@ -1,0 +1,17 @@
+<div class="upload-group">
+    <div class="upload-input-container">
+        {{ form_widget(form.pictureFiles, {
+            attr: {
+                class: 'upload-input'
+            }
+        }) }}
+    </div>
+    {% if form_errors(form.pictureFiles) %}
+        <div class="admin-form-error icon-left">
+            <svg class="icon i-left">
+                <use xlink:href="/svg/sprite.svg#error"></use>
+            </svg>
+            {{ form_errors(form.pictureFiles) }}
+        </div>
+    {% endif %}
+</div>

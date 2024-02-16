@@ -1,0 +1,52 @@
+<template id="order-show-template">
+    <div class="order-show">
+        <div class="order-show-header">
+            <div class="order-show-title">
+                <span class="js-order-show-invoiceNumber">n° machin</span>
+                <span class="js-order-show-date">date exemple</span>
+            </div>
+        </div>
+        <div class="order-show-body">
+            <div class="order-show-group">
+                <h3 class="order-show-label">Nom :</h3>
+                <p class="js-order-show-name"></p>
+            </div>
+            <div class="order-show-group">
+                <h3 class="order-show-label">Adresse email :</h3>
+                <p><a class="js-order-show-mail" href=""></a></p>
+            </div>
+            <div class="order-show-group">
+                <h3 class="order-show-label">Téléphone :</h3>
+                <p class="js-order-show-phone"></p>
+            </div>
+            <div class="order-show-group city-group">
+                <div class="city-label">
+                    <h3 class="order-show-label">Ville :</h3>
+                    <p class="js-order-show-city"></p>
+                </div>
+                <div class="distance-calculator-loader">
+                    <svg class="icon i-left i-loader">
+                        <use xlink:href="/svg/sprite.svg#load"></use>
+                    </svg>
+                    <span>calcul de la distance en cours</span>
+                </div>
+                <div 
+                    class="distance-calculator icon-left"
+                    data-entrypoint="{{ path('admin_apiDistanceCalculator') }}"
+                    >
+                    <svg class="icon i-left">
+                        <use xlink:href="/svg/sprite.svg#my_location_fill"></use>
+                    </svg>
+                    <div class="body">
+                        <div class="title"></div>
+                        <div class="text"><strong class="distance"></strong> à vol d'oiseau</div>
+                    </div>
+                </div>
+            </div>
+            <div class="order-show-group">
+                <h3 class="order-show-label">Message :</h3>
+                <p class="js-order-show-message"></p>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,17 @@
+<div class="admin-form-group">
+    <div class="form-box-container">
+        {{ form_widget(form.title, {
+            attr: {
+                class: 'form-box title-input'
+            }
+        }) }}
+    </div>
+    {% if form_errors(form.title) %}
+        <div class="admin-form-error icon-left">
+            <svg class="icon i-left">
+                <use xlink:href="/svg/sprite.svg#error"></use>
+            </svg>
+            {{ form_errors(form.title) }}
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,32 @@
+<div class="order-controls">
+    <div class="master-checkbox-control order-control">
+        <div class="my-checkbox js-order-masterCheckbox"
+            title="Tout sélectionner"
+            >
+            <svg class="icon i-my-checkbox-check">
+                <use xlink:href="/svg/sprite.svg#check"></use>
+            </svg>
+        </div>
+    </div>
+    <div 
+        class="js-order-mark-status order-control order-control-disappear"
+        data-entrypoint="{{ path('admin_order_apiMarkStatus') }}"
+        title="marquer non lu"
+        >
+        <svg class="icon i-mark-not-seen">
+            <use xlink:href="/svg/sprite.svg#email_unread"></use>
+        </svg>
+        <svg class="icon i-mark-seen">
+            <use xlink:href="/svg/sprite.svg#mail_seen"></use>
+        </svg>
+    </div>
+    <div 
+        class="js-order-trash order-control order-control-disappear"
+        data-entrypoint="{{ path('admin_order_apiDelete') }}"
+        title="supprimer"
+        >
+        <svg class="icon">
+            <use xlink:href="/svg/sprite.svg#trash"></use>
+        </svg>
+    </div>
+</div>

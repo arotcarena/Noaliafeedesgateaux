@@ -1,0 +1,33 @@
+<h2 style="text-align: center; padding: 15px; color: rgb(77, 61, 61);">Bonjour, Fée des gâteaux</h2>
+
+<h3 style="text-align: center; padding: 15px; color: rgb(77, 61, 61);">Félicitations ! Vous venez de recevoir une commande !</h3>
+
+<div style="background-color: rgba(228, 156, 146, 0.28); border-radius: 20px; color: rgb(77, 61, 61); padding: 15px; max-width: 500px; margin: 0 auto;">
+    <h5 style="margin: 0; text-align: right;">Commande n° {{ order.invoiceNumber }}</h3>
+    <h5 style="margin: 5px 0 20px; text-align: right;">{{ order.createdAt | order_date_format(true) }}</h4>
+    <div>
+        <h5 style="margin-bottom: 0;">Nom</h5>
+        <p style="margin-top: 4px;">{{ order.fullName }}</p>
+    </div>
+    <div>
+        <h5 style="margin-bottom: 0;">Email</h5>
+        <p style="margin-top: 4px;"><a style="color: rgb(46, 124, 212);" href="mailto:{{ order.email }}" title="Répondre à {{ order.email }}">{{ order.email }}</a></p>
+    </div>
+    <div>
+        <h5 style="margin-bottom: 0;">Téléphone</h5>
+        <p style="margin-top: 4px;">{{ order.phone }}</p>
+    </div>
+    <div>
+        <h5 style="margin-bottom: 0;">Ville</h5>
+        <p style="margin-top: 4px;">{{ order.location | location_format }}</p>
+    </div>
+    <div>
+        <h5 style="margin-bottom: 0;">Message</h5>
+        <p style="margin-top: 4px;">{{ order.message }}</p>
+    </div>
+</div>
+
+
+<p style="font-size: 0.9rem; padding: 15px; text-align: center; color: rgb(77, 61, 61);">
+    Pour gérer les commandes depuis l'interface d'administration, <a style="color: inherit; font-weight: 600;" href="{{ link }}">cliquez ici</a>
+</p>

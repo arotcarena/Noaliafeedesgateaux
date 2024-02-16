@@ -1,0 +1,47 @@
+<template id="image-show-template">
+    <aside class="image-show-modal">
+        <div class="image-show">
+            <svg class="icon image-show-closer">
+                <use xlink:href="svg/sprite.svg#close"></use>
+            </svg> 
+            <div class="image-show-title-container">
+                <h2 class="image-show-title"></h2>
+            </div>
+            <div class="image-show-body">
+                    <div class="image-show-carousel-container">
+                    <svg class="icon image-show-car-arrow image-show-car-arrow-left">
+                        <use xlink:href="/svg/sprite.svg#chevron_left"></use>
+                    </svg> 
+                    <div class="image-show-carousel">
+                        {# image-show-carousel-item-template #}
+                    </div>
+                    <svg class="icon image-show-car-arrow image-show-car-arrow-right">
+                        <use xlink:href="/svg/sprite.svg#chevron_right"></use>
+                    </svg> 
+                </div>
+                
+                <div class="small-list">
+                    {# small-img-template #}
+                </div>
+                <div class="image-show-description">
+                </div>
+            </div>
+        </div>
+        <svg class="icon i-loader i-loader-modal">
+            <use xlink:href="/svg/sprite.svg#load"></use>
+        </svg> 
+    </aside>
+</template>
+
+
+<template id="image-show-carousel-item-template">
+    <a class="img-link" href="" target="_blank" title="Ouvrir l'image dans un nouvel onglet">
+        <div class="image-show-carousel-item image-show-carousel-img">
+        </div>
+    </a>
+</template>
+
+<template id="small-img-template">
+    <div class="small-img">
+    </div>
+</template>      

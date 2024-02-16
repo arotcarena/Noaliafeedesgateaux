@@ -1,0 +1,32 @@
+<form class="order-search-filter-form" action="" method="GET">
+
+    <div class="form-group select-group order-select-group">
+    <p>Tri: </p>
+        <select class="form-box form-select js-order-select" name="sortBy">
+            <option value="latest" {% if search_filter.sortBy is same as 'latest' %}selected{% endif %}>
+                Plus récentes d'abord
+            </option>
+            <option value="oldest" {% if search_filter.sortBy is same as 'oldest' %}selected{% endif %}>
+                Plus anciennes d'abord
+            </option>
+        </select>
+    </div>
+
+    {# spot controls #}
+    <div class="spot-control">
+        <button class="icon-left admin-button {% if search_filter.seen is same as false %}active{% endif %}"
+                name="seen" value="0"
+        >
+            <svg class="icon i-left i-spot-on">
+                <use xlink:href="/svg/sprite.svg#mail_fill"></use>
+            </svg>
+            <span>Non lues <span class="counter js-not-seen-counter" data-entrypoint="{{ path('admin_order_apiCountNotSeen') }}">{{ countNotSeen }}</span></span>
+        </button>
+        <button class="admin-button js-filter-all {% if search_filter.seen is not same as false %}active{% endif %}"
+                name="seen" value="1"
+        >
+            <span>Toutes <span class="counter">{{ countAll }}</span></span>
+        </button>
+    </div>
+
+</form>

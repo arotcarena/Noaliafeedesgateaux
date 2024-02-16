@@ -1,0 +1,76 @@
+{% extends "base.html.twig" %}
+
+ {% block meta %}
+    <link rel="canonical" href="https://www.noaliafeedesgateaux.fr/">
+
+    <meta property="og:title" content="Noalia fée des gâteaux">
+    <meta property="og:url" content="https://www.noaliafeedesgateaux.fr">
+    <meta property="og:description" content="Vous souhaitez un gâteau sur mesure pour un événement sur Cannes et sa région ? Je propose des créations personnalisées et uniques. Les recettes sont adaptées à chaque demande.">
+    <meta name="description" content="Vous souhaitez un gâteau sur mesure pour un événement sur Cannes et sa région ? Je propose des créations personnalisées et uniques. Les recettes sont adaptées à chaque demande.">
+{% endblock %}
+
+
+
+{% block javascript %}
+    <script src="/js/views/home/index.js" type="module" defer></script>
+{% endblock %}
+
+{% block flashes %}{% endblock %}
+{% block flashes_on_header %}
+    <div class="header-flashes">
+        {% include "layouts/_flashes.html.twig" %}
+    </div>
+{% endblock %}
+
+{% block body %}
+
+
+        <h1 class="main-title">Mes dernières créations</h1>
+
+        {% if (cakes_spotlighted | length) >= 3  %}
+            <div class="main-body carousel-container">
+                <svg class="icon car-arrow car-arrow-left">
+                    <use xlink:href="/svg/sprite.svg#chevron_left"></use>
+                </svg> 
+                <div class="carousel">
+                    {% set padding = carouselItem_padding_calc(cakes_spotlighted) %}
+                    {% for cake in cakes_spotlighted %}
+                        <div class="carousel-item"
+                            data-entrypoint="{{ path('cakes_api_getCakeData') }}"
+                            data-apivisitcake="{{ path('cakes_api_addVisit') }}"
+                            style="padding: {{ padding }};"
+                        >
+                            <div class="carousel-img-container js-cake-card"
+                                data-id="{{ cake.id }}"
+                                style="background: url({{ cake.firstPicture | picture_path }}) center center / cover no-repeat"
+                            >
+                                {% if cake.title %}
+                                    <div class="board">
+                                        <p>{{ cake.title }}</p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <svg class="icon car-arrow car-arrow-right">
+                    <use xlink:href="/svg/sprite.svg#chevron_right"></use>
+                </svg> 
+            </div>
+        {% else %}
+            <p class="empty-spotlighted-message">Oups... aucun gâteau n'est affiché ici actuellement.</p>
+        {% endif %}
+
+        
+        <div class="home-to-cakes-link-container">
+            <a class="home-to-cakes-link" href="{{ path('cakes_index') }}">
+                <span>Voir plus de gâteaux<span class="home-to-cakes-link-arrow">></span></span>
+            </a>
+        </div>
+        
+        {% include "layouts/_pub.html.twig" %}
+
+        {% include "order/_form.html.twig" %}
+        
+
+{% endblock %}

@@ -1,0 +1,53 @@
+<div class="admin-home-block">
+    <h3 class="block-title icon-left">
+        <svg class="icon i-left i-cake">
+            <use xlink:href="/svg/sprite.svg#cake_fill"></use>
+        </svg> 
+        <span>Mes gâteaux</span>
+    </h3>
+    <div class="block-body">
+        <div class="block-big">
+            <span class="block-big-counter">{{ dashboard.countCakesSpotlighted | number_formater }}</span>
+            <div class="block-big-label icon-right">
+                <a href="{{ path('admin_cakes_index', {spotlighted: true}) }}">gâteau{% if dashboard.countCakesSpotlighted > 1 %}x{% endif %} à la Une</a>
+                <svg class="icon i-right i-spot">
+                    <use xlink:href="/svg/sprite.svg#spot_on"></use>
+                </svg> 
+            </div>
+        </div>
+        {% if dashboard.countCakesSpotlighted < 4 %}
+            <div class="alert alert-danger">
+                Attention ! il faut au minimum 4 gâteaux à la Une pour un affichage optimal.
+                Rdv sur <a href="{{ path('admin_cakes_index') }}">Gérer mes gâteaux</a>, et cliquez sur 
+                <svg class="icon i-right i-spot">
+                    <use xlink:href="/svg/sprite.svg#spot_off"></use>
+                </svg> 
+            </div>
+        {% endif %}
+        
+        <div class="block-big">
+            <span class="block-big-counter">{{ dashboard.countCakes | number_formater }}</span>
+            <span class="block-big-label">au total</span>
+        </div>
+        <a href="{{ path('admin_cakes_index', {sortBy: 'maxVisited'}) }}" class="block-link admin-home-button icon-left">
+            <svg class="icon i-left">
+                <use xlink:href="/svg/sprite.svg#trending"></use>
+            </svg> 
+            <span>Gâteaux les plus vus</span>
+        </a>
+    </div>
+    <div class="block-footer">
+        <a href="{{ path('admin_cakes_index') }}" class="admin-home-button dual icon-left">
+            <svg class="icon i-left i-cake">
+                <use xlink:href="/svg/sprite.svg#cake_fill"></use>
+            </svg> 
+            <span>Gérer mes gâteaux</span>
+        </a>
+        <a href="{{ path('admin_cakes_new') }}" class="admin-home-button add-button dual icon-left">
+            <svg class="icon i-left i-add">
+                <use xlink:href="/svg/sprite.svg#add"></use>
+            </svg> 
+            <span>Ajouter un gâteau</span>
+        </a>
+    </div>
+</div>

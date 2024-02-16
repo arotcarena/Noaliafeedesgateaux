@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Oups... une erreur a eu lieu{% endblock %}
+
+{% block header %}
+    {% include "layouts/header/_login_navbar.html.twig" %}
+{% endblock %}
+
+{% block main_class %}main main-login{% endblock %}
+
+
+
+{% block body %}
+    <h1>
+        {% block error_title %}Oups... Une erreur a eu lieu{% endblock %}
+    </h1>
+    <div class="alert alert-danger icon-left">
+        <svg class="icon i-left">
+            <use xlink:href="/svg/sprite.svg#error"></use>
+        </svg>
+        <span>{{ status_text }} (status_code : {{status_code}})</span>
+    </div>
+    <div>{{ error_message }}</div>
+    <div class="home-link-container">
+        <a class="home-link icon-left" href="{{ path('home') }}">
+            <svg class="icon i-left">
+                <use xlink:href="/svg/sprite.svg#home_fill"></use>
+            </svg>
+            <span>Retour à l'accueil</span>
+        </a>
+    </div>
+{% endblock %}

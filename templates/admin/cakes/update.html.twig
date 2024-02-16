@@ -1,0 +1,90 @@
+{% extends "admin/cakes/show.html.twig" %}
+
+
+{% block breadcrumb %}
+    {% include "admin/layouts/_breadcrumb.html.twig" %}
+    <a href="{{ path('admin_cakes_index') }}" class="breadcrumb-item">Gâteaux</a>
+    <span class="breadcrumb-separator">></span>
+    <a href="{{ path('admin_cakes_show', {id: cake.id}) }}" class="breadcrumb-item">{{ cake.title ?: 'Sans titre' }}</a>
+    <span class="breadcrumb-separator">></span>
+    <span class="breadcrumb-item active">Modifier</span>
+{% endblock %}
+
+
+
+
+{% block cake_show_start %}
+    {{ form_start(form) }}
+    <div class="cake-update">
+{% endblock %}
+
+    
+
+
+    {% block cake_secondary_pictures %}
+        {% for picture in cake.pictures %}
+            <div class="secondary-picture-container"
+                data-pictureid="{{ picture.id }}"
+                data-cakeid="{{ cake.id }}"
+            >
+                <img class="secondary-picture" src="{{ picture | picture_path }}">
+                <svg class="icon js-picture-delete" data-entrypoint="{{ path('admin_picture_delete') }}">
+                    <use xlink:href="/svg/sprite.svg#trash"></use>
+                </svg> 
+                <svg class="icon js-picture-to-first" 
+                    data-firstimage=".js-first-picture" 
+                    data-entrypoint="{{ path('admin_picture_replaceFirst') }}"
+                >
+                    <use xlink:href="/svg/sprite.svg#arrow_up"></use>
+                </svg> 
+            </div>
+        {% endfor %}
+        {% include "admin/cakes/form/fields/_pictureFiles.html.twig" %}
+        
+    {% endblock %}
+    {% block secondary_pictures_container_class %}
+        {% if form_errors(form.pictureFiles) %}is-invalid{% endif %}
+    {% endblock %}
+
+
+
+    {% block cake_title %}
+        {% include "admin/cakes/form/fields/_title.html.twig" %}
+    {% endblock %}
+    {% block title_container_class %}
+        {% if form_errors(form.title) %}is-invalid{% endif %}
+    {% endblock %}
+
+
+    {% block cake_description %}
+        {% include "admin/cakes/form/fields/_description.html.twig" %}
+    {% endblock %}
+    {% block description_container_class %}
+        {% if form_errors(form.description) %}is-invalid{% endif %}
+    {% endblock %}
+
+    {% block cake_controls %}
+        <div class="update-new-controls-container">
+            <a href="{{ path('admin_cakes_index') }}" class="cake-card-button cake-submit-button cake-cancel-button icon-left">
+                Retour
+            </a>
+            <button class="cake-card-button cake-submit-button icon-left" type="submit">
+                <svg class="icon i-left">
+                    <use xlink:href="/svg/sprite.svg#save"></use>
+                </svg> 
+                <svg class="icon i-left i-loader">
+                    <use xlink:href="/svg/sprite.svg#load"></use>
+                </svg> 
+                <span>Enregistrer</span>
+            </button>
+        </div>
+    {% endblock %}
+
+
+{% block cake_show_end %}
+    </div>
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+    
+    <p class="admin-cake-form-info">* champs obligatoires</p>
+{% endblock %}

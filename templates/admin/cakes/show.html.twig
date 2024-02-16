@@ -1,0 +1,70 @@
+{% extends "admin/admin_base.html.twig" %}
+
+{% block breadcrumb %}
+    {% include "admin/layouts/_breadcrumb.html.twig" %}
+    <a href="{{ path('admin_cakes_index') }}" class="breadcrumb-item">Gâteaux</a>
+    <span class="breadcrumb-separator">></span>
+    <span class="breadcrumb-item active">{{ cake.title ?: 'Sans titre' }}</span>
+{% endblock %}
+
+
+{% block body %}
+    
+    {% block cake_show_start %}{% endblock %}
+
+        <div class="cake-show">
+            
+            <div class="cake-show-container first-picture-container {% block first_picture_container_class %}{% endblock %}"> 
+                <h2>Photo principale *</h2>
+                {% block cake_first_picture %}
+                    <img 
+                        class="first-picture js-first-picture" 
+                        src="{{ cake.firstPicture | picture_path }}"
+                        data-pictureid="{{ cake.firstPicture.id ?? 'default' }}"
+                    >
+                {% endblock %}
+            </div>
+
+            <div class="cake-show-container secondary-pictures-container {% block secondary_pictures_container_class %}{% endblock %}">
+                <h2>Photos supplémentaires</h2>
+                {% block cake_secondary_pictures %}
+                    {% for picture in cake.pictures %}
+                        <img class="secondary-picture" src="{{ picture | picture_path }}">
+                    {% endfor %}
+                {% endblock %}
+            </div>
+
+            <div class="cake-show-super-container">
+                <div class="cake-show-container title-container {% block title_container_class %}{% endblock %}">
+                    <h2>Titre</h2>
+                    {% block cake_title %}
+                        <p>{{ cake.title }}</p>
+                    {% endblock %}
+                </div>
+                <div class="cake-show-container description-container {% block description_container_class %}{% endblock %}">
+                    <h2>Description</h2>
+                    {% block cake_description %}
+                        <p>{{ cake.description }}</p>
+                    {% endblock %}
+                </div>
+            </div>
+
+            {% block cake_createdAt %}
+                <div class="cake-show-fat-container">
+                    <div class="cake-show-container date-container">
+                        <p>Gâteau ajouté le <strong>{{ cake.createdAt.format('d/m/Y') }}</strong></p>
+                    </div>
+                </div>
+            {% endblock %}
+            
+            <div class="cake-show-container controls-container">
+                {% block cake_controls %}
+                    {% include "admin/cakes/form/_update_button.html.twig" %}
+                    {% include "admin/cakes/form/_delete_button.html.twig" %}
+                {% endblock %}
+            </div>
+        </div>
+
+    {% block cake_show_end %}{% endblock %}
+
+{% endblock %}

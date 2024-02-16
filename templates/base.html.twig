@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>{% block title %}Noalia fée des gâteaux{% endblock %}</title>
+        
+        {# favicon #}
+        <link rel="icon" href="/img/logo/fairy_favicon.png">
+
+        <meta property="og:locale" content="fr_FR">
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="Noalia fée des gâteaux">
+	
+        {% block meta %}{% endblock %}
+        
+
+        {% block stylesheets %}
+            <!-- slick (carousel) css -->
+            <link rel="stylesheet" type="text/css" href="/js/packages/slick/slick.css">
+            <link rel="stylesheet" type="text/css" href="/js/packages/slick/slick-theme.css">
+            <!-- my css -->
+            <link href="/main.css" rel="stylesheet">
+        {% endblock %}
+
+        {% block admin_css %}{% endblock %}
+
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+
+        {% block base_javascript %}
+        <!-- slick (carousel) js -->
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js" defer></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js" defer></script>
+        <script type="text/javascript" src="/js/packages/slick/slick.min.js" defer></script>
+
+        <!-- my js -->
+        <script src="/js/views/base.js" type="module" defer></script>
+        {% endblock %}
+
+        {% block javascript %}{% endblock %}
+    </head>
+
+    <body>
+        {% block header %}
+            <header class="header">
+                {% include "layouts/header/_navbar.html.twig" %}
+                {% block flashes_on_header %}{% endblock %} 
+                {% include "layouts/header/_header_body.html.twig" %}
+            </header>
+        {% endblock %}
+
+        {% block container %}
+            <div class="container main-container">
+                <main class="{% block main_class %}main{% endblock %}"> 
+                    {% block flashes %}
+                        {% include "layouts/_flashes.html.twig" %}
+                    {% endblock %} 
+
+                    {% block body %}{% endblock %}
+                </main>
+            </div>
+        {% endblock %}
+
+        {% block footer %}
+            {% include "layouts/_footer.html.twig" %}  
+        {% endblock %}
+
+
+       
+
+        {% block js_templates %}
+            {% include "js_template/image_show.html.twig" %}
+        {% endblock %}
+
+        {% block additionnal_js_templates %}{% endblock %}
+
+    </body>
+
+    
+</html>

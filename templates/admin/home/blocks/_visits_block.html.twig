@@ -1,0 +1,26 @@
+<div class="admin-home-block">
+    <h3 class="block-title icon-left">
+        <svg class="icon i-left i-eye">
+            <use xlink:href="/svg/sprite.svg#eye_fill"></use>
+        </svg> 
+        <span>Visites</span>
+    </h3>
+    <div class="block-body">
+        <div class="block-big">
+            <span class="block-big-counter">{{ dashboard.countVisitsToday | number_formater }}</span>
+            <span class="block-big-label">aujourd'hui</span>
+        </div>
+        <div class="block-big">
+            <span class="block-big-counter">{{ dashboard.countVisits | number_formater }}</span>
+            <span class="block-big-label">au total</span>
+        </div>
+    </div>
+    <div class="block-footer">
+        <a class="admin-home-button icon-left" href="{{ path('admin_visit_index') }}">
+            <svg class="icon i-left">
+                <use xlink:href="/svg/sprite.svg#eye"></use>
+            </svg> 
+            <span>Historique des visites</span>
+        </a>
+    </div>
+</div>

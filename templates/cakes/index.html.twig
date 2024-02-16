@@ -1,0 +1,77 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Noalia fée des gâteaux : Toutes mes créations{% endblock %}
+
+ {% block meta %}
+    <meta property="og:title" content="Noalia fée des gâteaux : Toutes mes créations">
+    <meta property="og:url" content="https://www.noaliafeedesgateaux.fr/toutes-mes-créations">
+    <meta property="og:description" content="Envie d'un gâteau unique pour une occasion bien spéciale ? Donnez vous des idées en regardant toutes mes créations.">
+    <meta name="description" content="Envie d'un gâteau unique pour une occasion bien spéciale ? Donnez vous des idées en regardant toutes mes créations.">
+{% endblock %}
+
+
+{% block javascript %}
+    <script src="/js/views/cakes/index.js" type="module" defer></script>
+{% endblock %}
+
+{% block flashes %}{% endblock %}
+{% block flashes_on_header %}
+    <div class="header-flashes">
+        {% include "layouts/_flashes.html.twig" %}
+    </div>
+{% endblock %}
+
+{% block header %}
+    <header class="header-light">
+        {% include "layouts/header/_navbar.html.twig" %}
+    </header>
+{% endblock %}
+
+
+{% block main_class %}cakes{% endblock %}
+
+{% block body %}
+    
+    {% include "cakes/_breadcrumb.html.twig" %}
+
+    <h1 class="cakes-title appears-later">Toutes mes créations</h1>
+    
+    {% if (cakes | length) > 0 %}
+        <ul 
+            class="cakes-list"
+            data-entrypoint="{{ path('cakes_api_getCakeData') }}"
+            data-apivisitcake="{{ path('cakes_api_addVisit') }}"
+            >
+            {% for cake in cakes %}
+                {% include "cakes/_cake_card.html.twig" %}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="empty-spotlighted-message more-height">Oups... suite à un problème technique aucun gâteau ne peut être affiché pour le moment, revenez un peu plus tard...</p>
+    {% endif %}
+
+    <div 
+        class="infinite-pagination-control"
+        data-entrypoint="{{ path('cakes_api_infinitePagination') }}"
+        data-offset="{{ limit }}"  {# l'offset de base est la limite, puisqu'un groupe est déjà chargé à l'ouverture de la page #}
+        data-container=".cakes-list"
+        data-template="#cake-card-template"
+    >
+        <svg class="icon i-loader">
+            <use xlink:href="svg/sprite.svg#load"></use>
+        </svg> 
+    </div>
+
+    {% include "layouts/_pub.html.twig" %}
+
+    {% include "order/_form.html.twig" %}
+
+{% endblock %}
+    
+{% block additionnal_js_templates %}
+    {% include "js_template/cake_card.html.twig" %}
+{% endblock %}
+   
+
+
+   

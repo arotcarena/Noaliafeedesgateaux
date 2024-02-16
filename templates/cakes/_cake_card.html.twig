@@ -1,0 +1,11 @@
+<li class="cake-item js-cake-card appears"
+
+    data-id="{{ cake.id }}"
+    style="background: url({{ cake.firstPicture | picture_path }}) center center / cover no-repeat"
+>
+    {% if cake.title %}
+        <div class="board appears-faster">
+            <p>{{ cake.title }}</p>
+        </div>
+    {% endif %}    
+</li>

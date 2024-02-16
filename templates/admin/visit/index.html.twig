@@ -1,0 +1,44 @@
+{% extends "admin/admin_base.html.twig" %}
+
+
+{% block breadcrumb %}
+    {% include "admin/layouts/_breadcrumb.html.twig" %}
+    <span class="breadcrumb-item active">Visites</span>
+{% endblock %}
+
+{% block breadcrumb_add_class %}everVisible{% endblock %}
+
+
+{% block body %}
+
+    {% include "admin/visit/_search_filter_form.html.twig" %}
+
+
+    <div class="visit-results-counter">
+        <strong>{{ pagination.getTotalItemCount | number_formater }}</strong> résultat{% if pagination.getTotalItemCount > 1 %}s{% endif %}
+    </div>
+
+    <table class="table">
+        <thead class="table-head">
+            <th class="table-head-cell">Date</th>
+            <th class="table-head-cell">Page visitée</th>
+        </thead>
+        <tbody class="table-body">
+            {% for visit in pagination %}
+                <tr class="table-row">
+                    <td class="table-cell">{{ visit.visitedAt | order_date_format(true) }}</td>
+                    <td class="table-cell">{{ visit.visitedPageId | page_label }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {# display navigation #}
+    {% do pagination.setTemplate('admin/layouts/_pagination.html.twig') %}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+{% endblock %}
+
+

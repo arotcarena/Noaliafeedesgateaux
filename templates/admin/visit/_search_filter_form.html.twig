@@ -1,0 +1,49 @@
+{{ form_start(form, {
+    attr: {
+        class: 'js-visit-search-filter-form'
+    }
+}) }}
+<div class="visit-search-filter-form"> 
+    <h3 class="visit-search-filter-form-title">Filtres</h3>
+    <div class="form-group {% if form_errors(form.period) %}is-invalid{% endif %}">
+        {{ form_widget(form.period, {
+            attr: {
+                class: 'form-box'
+            }
+        }) }}
+        <div class="error icon-left">
+            <svg class="icon i-left i-error-red">
+                <use xlink:href="/svg/sprite.svg#error"></use>
+            </svg> 
+            {{ form_errors(form.period) }}
+        </div>
+    </div>
+    <div class="form-group {% if form_errors(form.pageId) %}is-invalid{% endif %}">
+        {{ form_widget(form.pageId, {
+            attr: {
+                class: 'form-box'
+            }
+        }) }}
+        <div class="error icon-left">
+            <svg class="icon i-left i-error-red">
+                <use xlink:href="/svg/sprite.svg#error"></use>
+            </svg> 
+            {{ form_errors(form.pageId) }}
+        </div>
+    </div>
+    <div class="form-group sortBy-group {% if form_errors(form.sortBy) %}is-invalid{% endif %}">
+        {{ form_label(form.sortBy, 'Tri:') }}
+        {{ form_widget(form.sortBy, {
+            attr: {
+                class: 'form-box'
+            }
+        }) }}
+        <div class="error icon-left">
+            <svg class="icon i-left i-error-red">
+                <use xlink:href="/svg/sprite.svg#error"></use>
+            </svg> 
+            {{ form_errors(form.sortBy) }}
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}

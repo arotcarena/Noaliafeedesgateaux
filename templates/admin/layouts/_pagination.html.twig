@@ -1,0 +1,84 @@
+{# default Sliding pagination control implementation #}
+{% if pageCount > 1 %}
+
+    <div class="pagination-container">
+
+        <div class="pagination">
+        
+            {% if first is defined and current != first %}
+                <span class="pagination-item first active">
+                    <a href="{{ path(route, query|merge({(pageParameterName): first})) }}">
+                        <svg class="icon i-pagination">
+                            <use xlink:href="/svg/sprite.svg#first_page"></use>
+                        </svg> 
+                    </a>
+                </span>
+            {% else %}
+                <span class="pagination-item first disabled">
+                    <svg class="icon i-pagination">
+                        <use xlink:href="/svg/sprite.svg#first_page"></use>
+                    </svg> 
+                </span>
+            {% endif %}
+
+            {% if previous is defined %}
+                <span class="pagination-item previous active">
+                    <a rel="prev" href="{{ path(route, query|merge({(pageParameterName): previous})) }}">
+                        <svg class="icon i-pagination">
+                            <use xlink:href="/svg/sprite.svg#chevron_left"></use>
+                        </svg> 
+                    </a>
+                </span>
+
+            {% else %}
+                <span class="pagination-item previous disabled">
+                    <svg class="icon i-pagination">
+                        <use xlink:href="/svg/sprite.svg#chevron_left"></use>
+                    </svg> 
+                </span>
+            {% endif %}
+
+            {% for page in pagesInRange %}
+                {% if page != current %}
+                    <span class="pagination-item page active">
+                        <a href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a>
+                    </span>
+                {% else %}
+                    <span class="pagination-item page current">{{ page }}</span>
+                {% endif %}
+            {% endfor %}
+
+            {% if next is defined %}
+                <span class="pagination-item next active">
+                    <a rel="next" href="{{ path(route, query|merge({(pageParameterName): next})) }}">
+                        <svg class="icon i-pagination">
+                            <use xlink:href="/svg/sprite.svg#chevron_right"></use>
+                        </svg> 
+                    </a>
+                </span>
+            {% else %}
+                <span class="pagination-item next disabled">
+                    <svg class="icon i-pagination">
+                        <use xlink:href="/svg/sprite.svg#chevron_right"></use>
+                    </svg> 
+                </span>
+            {% endif %}
+
+            {% if last is defined and current != last %}
+                <span class="pagination-item last active">
+                    <a href="{{ path(route, query|merge({(pageParameterName): last})) }}">
+                        <svg class="icon i-pagination">
+                            <use xlink:href="/svg/sprite.svg#last_page"></use>
+                        </svg> 
+                    </a>
+                </span>
+            {% else %}
+                <span class="pagination-item last disabled">
+                    <svg class="icon i-pagination">
+                        <use xlink:href="/svg/sprite.svg#last_page"></use>
+                    </svg> 
+                </span>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

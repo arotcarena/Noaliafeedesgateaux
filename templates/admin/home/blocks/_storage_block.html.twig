@@ -1,0 +1,29 @@
+<div class="admin-home-block">
+    <h3 class="block-title icon-left">
+        <svg class="icon i-left">
+            <use xlink:href="/svg/sprite.svg#database"></use>
+        </svg> 
+        <span>Stockage</span>
+    </h3>
+    <p class="block-info">Capacités maximales</p>
+    <div class="block-body no-margin">
+        <div class="block-big">
+            <span class="block-big-counter small">{{ dashboard.maxCakes | number_formater }}</span>
+            <span class="block-big-label">gâteaux</span>
+        </div>
+        <div class="block-big">
+            <span class="block-big-counter small">{{ dashboard.maxOrders | number_formater }}</span>
+            <span class="block-big-label">commandes</span>
+        </div>
+        <div class="block-big">
+            <span class="block-big-counter small">{{ dashboard.maxVisits | number_formater }}</span>
+            <span class="block-big-label">visites</span>
+        </div>
+    </div>
+    <p class="block-info small">
+        <svg class="icon">
+            <use xlink:href="/svg/sprite.svg#info"></use>
+        </svg>
+        Si la limite de commandes/visites est atteinte, la plus ancienne commande/visite sera supprimée pour permettre à la nouvelle d'être sauvegardée
+    </p>
+</div>

@@ -1,0 +1,19 @@
+
+<li class="order-item {% if order.seen is same as false %}active{% endif %}"
+    data-id="{{ order.id }}"
+    data-entrypoint="{{ path('admin_order_apiShowOrder') }}"
+>
+    <span class="order-item-element order-item-checkbox ">
+        <span class="my-checkbox js-item-checkbox"
+            data-id="{{ order.id }}"
+            data-seen="{{ order.seen }}"
+        >
+            <svg class="icon i-my-checkbox-check">
+                <use xlink:href="/svg/sprite.svg#check"></use>
+            </svg>
+        </span>
+    </span>
+    <span class="order-item-element order-item-fullName">{{ order.fullName | excerpt(15)}}</span>
+    <span class="order-item-element order-item-message">{{ order.message | excerpt(60) }}</span>
+    <span class="order-item-element order-item-date">{{ order.createdAt | order_date_format }}</span>
+</li>

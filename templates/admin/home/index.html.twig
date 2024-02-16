@@ -1,0 +1,27 @@
+{% extends "admin/admin_base.html.twig" %}
+
+{% block body %}
+    <h2 class="admin-title icon-left">
+        <svg class="icon i-left">
+            <use xlink:href="/svg/sprite.svg#home_fill"></use>
+        </svg>
+        <span>Tableau de bord</span>
+    </h2>
+
+    <main class="admin-home-body">
+        
+        {% include "admin/home/blocks/_cakes_block.html.twig" %}
+
+        {% include "admin/home/blocks/_orders_block.html.twig" %}
+
+        {% include "admin/home/blocks/_visits_block.html.twig" %}
+        
+        {% include "admin/home/blocks/_storage_block.html.twig" %}
+
+        {% include "admin/home/blocks/_details_block.html.twig" %}
+        
+        {% include "admin/home/blocks/_security_block.html.twig" %}
+        
+    </main>
+    
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "admin/admin_base.html.twig" %}
+
+
+{% block breadcrumb %}
+    {% include "admin/layouts/_breadcrumb.html.twig" %}
+    <span class="breadcrumb-item active">Commandes</span>
+{% endblock %}
+
+
+{% block body %}
+
+    {% include "admin/order/parts/_order_search_filter_form.html.twig" %}
+
+    {% include "admin/order/parts/_order_controls.html.twig" %}
+
+    <ul class="orders-list">
+        {% for order in pagination %}
+            {% include "admin/order/parts/_order_card.html.twig" %}
+        {% endfor %}
+        <svg class="icon order-show-closer">
+            <use xlink:href="/svg/sprite.svg#arrow_back"></use>
+        </svg>
+    </ul>
+
+    {# display navigation #}
+    {% do pagination.setTemplate('admin/layouts/_pagination.html.twig') %}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+{% endblock %}
+
+
+
+{% block additionnal_js_templates %}
+    {% include "js_template/order_show.html.twig" %}
+{% endblock %}

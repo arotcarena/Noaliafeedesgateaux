@@ -1,0 +1,12 @@
+<div class="js-flashes">
+    {% for key, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ key }} icon-left">
+                <svg class="icon i-left">
+                    <use xlink:href="/svg/sprite.svg#{% if key is same as 'danger' %}error{% else %}info{% endif %}"></use>
+                </svg> 
+                <span>{{ message }}</span>
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>

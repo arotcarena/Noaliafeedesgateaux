@@ -1,0 +1,31 @@
+<nav class="navbar admin-navbar scroll">
+    <div class="nav-group-home">
+        <a href="{{ path('admin_home') }}" class="nav-link logo-link {% if current_menu is defined and current_menu is same as 'admin_home' %}active{% endif %}" title="Tableau de bord">
+            <img class="nav-logo" src="/img/logo/admin_nav_logo.png">
+        </a>
+        <svg class="icon i-nav-menu js-hidden-menu-opener">
+            <use xlink:href="/svg/sprite.svg#menu"></use>
+        </svg>
+        <svg class="icon i-nav-menu js-hidden-menu-closer">
+            <use xlink:href="/svg/sprite.svg#close"></use>
+        </svg>
+    </div>
+    <ul class="nav-group js-hidden-menu">
+        <li class="nav-item">
+            <a href="{{ path('admin_cakes_index') }}" class="nav-link icon-left {% if current_menu is defined and current_menu is same as 'admin_cakes' %}active{% endif %}">
+                <svg class="icon i-left i-cake">
+                    <use xlink:href="/svg/sprite.svg#cake_fill"></use>
+                </svg> 
+                <span class="nav-link-label">Gérer les gâteaux</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ path('admin_order_index') }}" class="nav-link icon-left">
+                <svg class="icon i-left">
+                    <use xlink:href="/svg/sprite.svg#cart_fill"></use>
+                </svg> 
+                <span class="nav-link-label js-order-button">Gérer les commandes</span>
+            </a>
+        </li>
+    </ul>
+</nav>

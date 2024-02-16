@@ -1,0 +1,54 @@
+{% extends "admin/admin_base.html.twig" %}
+
+{% block breadcrumb %}
+    {% include "admin/layouts/_breadcrumb.html.twig" %}
+    <span class="breadcrumb-item active">Gâteaux</span>
+{% endblock %}
+
+
+
+{% block body %}
+
+    {% include "admin/cakes/form/_filter_search_form.html.twig" %}
+
+    {# total items count #}
+    <div class="admin-cake-count-results">
+        <strong>{{ pagination.getTotalItemCount ?: 'Aucun' }} gâteau{% if pagination.getTotalItemCount > 1 %}x{% endif %}</strong>
+        {% if pagination.getTotalItemCount is same as 0 %} ne {% endif %}
+         correspond{% if pagination.getTotalItemCount > 1 %}ent{% endif %} à la recherche.
+    </div>
+
+   
+    {# spot controls #}
+    <div class="spot-control">
+        <button class="icon-left admin-button js-filter-spotlighted {% if search_filter.spotlighted is same as true %}active{% endif %}" data-value="1">
+            <svg class="icon i-left i-spot-on">
+                <use xlink:href="/svg/sprite.svg#spot_on"></use>
+            </svg>
+            <span>Gâteaux à la Une <span class="counter js-count-spotlighted">{{ count_spotlighted_on_search }}</span></span>
+        </button>
+        <button class="admin-button js-filter-all {% if search_filter.spotlighted is not same as true %}active{% endif %}" data-value="0">
+            Tous les gâteaux <span class="counter count-total-cakes">{{ count_all_on_search }}</span>
+        </button>
+    </div>
+
+    {# cake-list #}
+    <div class="admin-cake-list">
+        {% for cake in pagination %}
+            {% include "admin/cakes/parts/_cake_card.html.twig" %}
+        {% endfor %}
+    </div>
+
+    {# display navigation #}
+    {% do pagination.setTemplate('admin/layouts/_pagination.html.twig') %}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+
+    {% include "admin/cakes/form/_new_button.html.twig" %}
+    
+
+
+
+{% endblock %}
